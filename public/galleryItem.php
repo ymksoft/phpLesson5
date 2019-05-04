@@ -22,10 +22,9 @@ $galleryContent = renderGallery($galleryItem, "galleryItem.tpl");
 
 echo render(TEMPLATES_DIR . 'index.tpl', [
 	'title' => $galleryItem[0]['title'],
-	'content' => $galleryContent,
-	'h1' => $galleryItem[0]['title']
+	'h1' => $galleryItem[0]['title'],
+	'content' => $galleryContent
 ]);
 
 $newViewCount = $galleryItem[0]['views'] + 1;
-$sqlViewCount = 'UPDATE `images` SET `views` = '.$newViewCount.' WHERE `images`.`id` = '.$id;
-execQuery($sqlViewCount);
+updateGalleryCount($id, $newViewCount);
