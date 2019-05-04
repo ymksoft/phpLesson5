@@ -2,13 +2,12 @@
 
 require_once __DIR__ . '/../config/config.php';
 
-$gallery = createGallery(IMG_DIR);
-// $gallery = 'Галерея';
-
+$gallery = getGallery();
+$galleryContent = renderGallery($gallery, "galleryList.tpl");
 
 echo render(TEMPLATES_DIR . 'index.tpl', [
 	'title' => 'Галерея',
 	'h1' => 'Лучшие картиночки',
-	'content' => $gallery
+	'content' => $galleryContent
 ]);
 
