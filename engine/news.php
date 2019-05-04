@@ -15,8 +15,8 @@ function renderNews($news)
 
 	$newsContent = '';
 	foreach ($news as $newsItem) {
-		if (empty($newsItem['image'])) {
-			$newsItem['image'] = 'img/no-image.jpeg';
+		if (empty($newsItem['url'])) {
+			$newsItem['url'] = 'img/no-image.jpeg';
 		}
 
 		$newsContent .= render(TEMPLATES_DIR . 'newsItem.tpl', $newsItem);
