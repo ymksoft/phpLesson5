@@ -41,3 +41,12 @@ function show($sql)
 	return $result[0];
 }
 
+function showForRender($sql)
+{
+	$result = getAssocResult($sql);
+	if(empty($result)) {
+		return null;
+	}
+	return $result;
+}
+
