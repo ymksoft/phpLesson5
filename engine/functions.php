@@ -44,3 +44,30 @@ function createGallery($imgDir) {
 	}
 	return $result;
 }
+
+function getGallery()
+{
+	$sql = "SELECT * FROM images ORDER BY `images`.`views` DESC";
+	return getAssocResult($sql);
+}
+
+function updateGalleryCount($id, $newViewCount)
+{
+	$sqlViewCount = 'UPDATE `images` SET `views` = '.$newViewCount.' WHERE `images`.`id` = '.$id;
+	execQuery($sqlViewCount);
+}
+
+function renderGallery($images, $templateFile)
+{
+	$imagesContent = '';
+	foreach ($images as $imagesItem) {
+		if (empty($imagesItem['url'])) {
+			$imagesItem['url'] = 'img/no-image.jpeg';
+		}
+		if(!is_file($imagesItem['url'])) {
+			$imagesItem['url'] = 'img/no-image.jpeg';
+		}
+		$imagesContent .= render(TEMPLATES_DIR . $templateFile, $imagesItem );
+	}
+	return $imagesContent;
+}
