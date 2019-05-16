@@ -35,8 +35,10 @@
         }
     }
 ?>
+
 <h1>Калькулятор</h1>
 <p>Используем POST и выбор операции кнопочками</p>
+
 <form method="POST" action="">
 	<input name="a" type="number" style="width: 60px" value="<?=$a?>">
 	<input type="submit" value="+" name="calc">
@@ -46,7 +48,9 @@
 	<input name="b" type="number" style="width: 60px" value="<?=$b?>">
 	<b><?=$result?></b>
 </form>
+
 <br><br><a href="/index.php">на главную</a>
+
 </body>
 </html>
 

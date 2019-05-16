@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../config/config.php';
 
-
 $news = getNews();
 $newsContent = renderNews($news);
 
