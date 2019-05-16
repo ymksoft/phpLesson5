@@ -2,10 +2,12 @@
 
 require_once __DIR__ . '/../config/config.php';
 
-$newsContent = "";
+
+$news = getNews();
+$newsContent = renderNews($news);
 
 echo render(TEMPLATES_DIR . 'index.tpl', [
-	'title' => 'Магазин',
-	'h1' => 'Товары',
+	'title' => 'Новости',
+	'h1' => 'Горячие новости',
 	'content' => $newsContent
 ]);
