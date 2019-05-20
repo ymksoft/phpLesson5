@@ -17,6 +17,8 @@
 			<li><a href="/admin/index.php">Админка</a></li>
 			<li><a href="/register.php">Регистрация</a></li>
 			<li><a href="/login.php">Войти</a></li>
+			<li><a href="/basket.php">Личный кабинет</a></li>
+			<li><a href="/logout.php">Выйти</a></li>
 		</ul>
 	</header>
 	<h1>{{H1}}</h1>

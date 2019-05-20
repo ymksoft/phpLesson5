@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+$secure_key = "fds43feafdf43sdf";
+
 define('SITE_DIR', __DIR__ . '/../');
 define('CONFIG_DIR', SITE_DIR . 'config/');
 define('DATA_DIR', SITE_DIR . 'data/');
@@ -19,5 +22,6 @@ require_once ENGINE_DIR . 'db.php';
 require_once ENGINE_DIR . 'news.php';
 require_once ENGINE_DIR . 'reviews.php';
 require_once ENGINE_DIR . 'goods.php';
+require_once ENGINE_DIR . 'users.php';
 
 
