@@ -2,9 +2,9 @@
 
 require_once __DIR__ . '/../config/config.php';
 
-echo "<pre>";
-var_dump($_POST);
-echo "</pre><hr>";
+//echo "<pre>";
+//var_dump($_POST);
+//echo "</pre><hr>";
 
 $author = isset($_POST['author']) ? htmlspecialchars($_POST['author']) : '';
 $text = isset($_POST['text']) ? htmlspecialchars($_POST['text']) : '';

@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../config/config.php';
 
-$newsContent = "";
+$newsContent = "TODO";
 
 echo render(TEMPLATES_DIR . 'index.tpl', [
 	'title' => 'Магазин',

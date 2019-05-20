@@ -33,8 +33,10 @@
             break;
     }
 ?>
+
 <h1>Калькулятор</h1>
 <p>Используем GET и выбор через select</p>
+
 <form method="GET">
 	<input name="a" type="number" style="width: 60px" value="<?=$a?>">
 	<select name="operation" style="width: 60px">
@@ -47,7 +49,9 @@
 	<input type="submit" value="=" name="calc">
 	<b><?=$result?></b>
 </form>
+
 <br><br><a href="/index.php">на главную</a>
+
 </body>
 </html>
 
