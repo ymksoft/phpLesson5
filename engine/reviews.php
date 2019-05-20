@@ -1,11 +1,8 @@
 <?php
 
-
 function getReviews()
 {
-
 	$sql = "SELECT * FROM reviews";
-
 	return getAssocResult($sql);
 }
 
@@ -20,23 +17,19 @@ function showReview($id)
 	return $reviews[0];
 }
 
-function renderReviews()
+function renderReviews($reviews)
 {
-	$result = '<div class="reviews-list">';
-	$reviews = getReviews();
-
+	$Content = '';
 	foreach ($reviews as $review) {
-		$result .= '<div class="review">';
-		$result .= '<div>Автор: ' . $review['author'] . '</div>';
-		$result .= '<div>Комментарий: ' . $review['text'] . '</div>';
-		$result .= '<a href="editReview.php?id=' . $review['id'] . '">Изменить</a>';
-		$result .= '</div>';
-		$result .= '<hr>';
+		$Content .= render(TEMPLATES_DIR . 'reviews.tpl', $review);
 	}
-	$result .= '</div>';
-	return $result;
+	return $Content;
 }
 
+function renderReviewsForm($review)
+{
+	return render(TEMPLATES_DIR . 'reviewsform.tpl', $review);
+}
 
 function createReview($author, $text)
 {
