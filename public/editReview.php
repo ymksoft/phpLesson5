@@ -9,21 +9,9 @@ if (!$id) {
 	exit();
 }
 
-
-$review = showReview($id);
-
-if (!$review) {
-	echo '404';
-	exit();
-}
-
-echo "<pre>";
-var_dump($_POST);
-echo "</pre><hr>";
-
 $author = isset($_POST['author']) ? $_POST['author'] : '';
 $text = isset($_POST['text']) ? $_POST['text'] : '';
-$messages = '';
+$messages = 'Редактирование комментария: ';
 
 if ($author && $text) {
 	if (updateReview($id, $author, $text)) { 
@@ -42,20 +30,17 @@ if ($author && $text) {
 	}
 }
 
-?>
+$review = showReview($id);
 
-<br>
-<br>
-<br>
-<div class="messages">
-	<?= $messages ?>
-</div>
-<br>
-<form method="POST">
-	Имя:<br>
-	<input type="text" name="author" value="<?= $author ?>"><br>
-	Комментарий: <br>
-	<textarea name="text"><?= $text ?></textarea><br>
-	<br>
-	<input type="submit">
-</form>
+if (!$review) {
+	echo '404';
+	exit();
+}
+
+$reviewsContent = renderReviewsForm( $review );
+
+echo render(TEMPLATES_DIR . 'index.tpl', [
+	'title' => 'Комментарии',
+	'h1' => $messages,
+	'content' => $reviewsContent
+]);
