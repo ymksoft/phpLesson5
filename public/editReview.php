@@ -19,7 +19,7 @@ if ($author && $text) {
 	} else {
 		$messages .= "Что-то пошло не так";
 	}
-} else {
+} else if(isset($_POST['author']) || isset($_POST['text'])) {
 	if (!$author) {
 		$messages .= "Введите имя<br>";
 		$author = $review['author'];
