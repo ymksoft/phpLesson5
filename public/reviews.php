@@ -2,49 +2,38 @@
 
 require_once __DIR__ . '/../config/config.php';
 
-//echo "<pre>";
-//var_dump($_POST);
-//echo "</pre><hr>";
-
-$author = isset($_POST['author']) ? htmlspecialchars($_POST['author']) : '';
-$text = isset($_POST['text']) ? htmlspecialchars($_POST['text']) : '';
-$messages = '';
+$author = isset($_POST['author']) ? $_POST['author'] : '';
+$text = isset($_POST['text']) ? $_POST['text'] : '';
+$messages = 'Комментарии пользователей: ';
 
 if ($author && $text) {
 	if (createReview($author, $text)) {
-		$messages .= "Комментарий добавлен";
+		$messages .= "Комментарий добавлен!";
 		$author = '';
 		$text = '';
 	} else {
-		$messages .= "Что-то пошло не так";
+		$messages .= "Что-то пошло не так!";
 	}
 } else {
 	if (!$author) {
-		$messages .= "Введите имя<br>";
+		$messages .= "Введите имя!";
 	}
 	if (!$text) {
-		$messages .= "Добавьте Комментарий<br>";
+		$messages .= "Добавьте Комментарий!";
 	}
 }
 
+$reviews = getReviews();
+$reviewsContent = renderReviews($reviews);
 
+$reviewsContent .= renderReviewsForm( array('author' => "", 'text' => ""));
 
-echo renderReviews();
+echo render(TEMPLATES_DIR . 'index.tpl', [
+	'title' => 'Комментарии',
+	'h1' => $messages,
+	'content' => $reviewsContent
+]);
 
 ?>
 
-<br>
-<br>
-<br>
-<div class="messages">
-	<?= $messages ?>
-</div>
-<br>
-<form method="POST">
-	Имя:<br>
-	<input type="text" name="author" value="<?= $author ?>"><br>
-	Комментарий: <br>
-	<textarea name="text"><?= $text ?></textarea><br>
-	<br>
-	<input type="submit">
-</form>
+
