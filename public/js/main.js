@@ -1,6 +1,7 @@
 
 // обработчик onclick="addToBasket({{ID}})"
 function addToBasket(id) {
+    const $cnt = $('.message');
     $.post({
         url: '/api.php',
         data: {
@@ -11,7 +12,10 @@ function addToBasket(id) {
         },
         success: function (data) {
             if( data === 'OK' ) {
-                alert('Товар в корзине');
+                $cnt.text("Товар добавлен в корзину!");
+                setTimeout( function() {
+                    $cnt.html("&nbsp");
+                },2000);
             }
             else {
                 alert(data);
@@ -54,6 +58,17 @@ function removeFromBasket(id) {
         },
         success: function (data) {
             if( data === 'OK' ) {
+
+                $('[data-amount="0"]').text(
+                    Math.floor($('[data-amount="0"]').text()) -
+                    Math.floor($('[data-amount="' + id + '"]').text())
+                );
+
+                $('[data-sum="0"]').text(
+                    Math.floor($('[data-sum="0"]').text()) -
+                    Math.floor($('[data-sum="' + id + '"]').text())
+                );
+
                 $('[data-id="' + id + '"]').remove();
                 //alert('Товар удален из корзине');
             }
