@@ -1,7 +1,18 @@
 
 .btn {
+    background-color: #1F1;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.btn_remove {
     background-color: #999;
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
+}
+
+.message {
+    font-size: 10;
 }

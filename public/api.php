@@ -91,7 +91,7 @@ if( $apiMethod === 'addToBasket' )
     $count++;
 
     // сохранем корзину используя куки
-    setcookie("Basket[$id]", $count);
+    setcookie("Basket[$id]", $count );
     success();
 }
 
