@@ -3,4 +3,5 @@
 	<div>{{NAME}}</div>
     <div>{{DESCRIPTION}}</div>
     <div>Цена: {{PRICE}}</div>
+    <div><a class="btn" onclick="addToBasket({{ID}})">Купить</a></div>
 </div>
