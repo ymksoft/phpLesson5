@@ -17,6 +17,17 @@ function execQuery($sql)
 	return $result;
 }
 
+function insert($sql)
+{
+	$db = createConnection();
+
+	$result = mysqli_query($db, $sql);
+	$id = mysqli_insert_id($db);
+
+	mysqli_close($db);
+	return $id;
+}
+
 function getAssocResult($sql)
 {
 	$db = createConnection();

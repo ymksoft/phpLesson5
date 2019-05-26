@@ -17,7 +17,7 @@ function render($file, $variables = [])
 	$templateContent = file_get_contents($file);
 
 	foreach ($variables as $key => $value) {
-		if (!is_string($value)) {
+		if (!is_string($value) && !is_numeric($value)) {
 			continue;
 		}
 

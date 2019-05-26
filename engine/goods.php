@@ -12,6 +12,12 @@ function getGoodsAdmin()
 	return getAssocResult($sql);
 }
 
+function getGoodsByIds($ids) 
+{
+	$sql = "SELECT * FROM `products` WHERE `id` IN (" . implode(', ', $ids) . ")";
+	return getAssocResult($sql);
+}
+
 function updateGoods($id, $name, $description, $price, $isactive) 
 {
 	$link = createConnection();
@@ -45,3 +51,4 @@ function renderGoods($goods, $templateFile)
 	}
 	return $goodsContent;
 }
+

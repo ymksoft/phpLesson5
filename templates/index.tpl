@@ -24,6 +24,7 @@
 		</ul>
 	</header>
 	<h1>{{H1}}</h1>
+	<div class="message">&nbsp</div>
 	<div>{{CONTENT}}</div>
 
 	<script type="text/javascript" src="js/jquery-3.4.1.min.js" charset="UTF-8"></script>
