@@ -4,6 +4,13 @@ require_once __DIR__ . '/../config/config.php';
 
 $messages = 'Вход в магазин: ';
 
+if(isset($_SESSION['user'])) {
+	// Если авторизация через AJAX onclick->login
+	// редирект заработает с опцией output_buffering = on см phpinfo()
+	header('Location: /lk.php');
+	exit();
+}
+
 if( isset($_POST['enter']) ) {
 
 	$login = isset($_POST['login']) ? $_POST['login'] : '';
@@ -12,13 +19,13 @@ if( isset($_POST['enter']) ) {
 	if ($login && $pass) {
 		$result = checkUser($login, $pass);
 		if ($result) { 
-			$messages .= "Добро пожаловать! " . $login;
-			//var_dump();
-			$_SESSION['login'] = $result['login'];
-			$_SESSION['id'] = $result['id'];
-			$_SESSION['email'] = $result['email'];
-			$content .= '<br><a href="/basket.php">Перейти в кабинет</a><br>';
-			$content .= '<br><a href="/index.php">Перейти к покупкам</a><br>';
+			
+			$_SESSION['user'] = $result;
+
+			// редирект заработает с опцией output_buffering = on см phpinfo()
+			header('Location: /lk.php');
+			exit();
+
 		} else {
 			$messages .= "Что-то пошло не так";
 		}
