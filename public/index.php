@@ -3,8 +3,8 @@
 require_once __DIR__ . '/../config/config.php';
 
 $goodsContent = "";
-if(isset($_SESSION['login'])) {
-	$goodsContent = 'Привет, ' . $_SESSION['login'] . '<hr>';
+if(isset($_SESSION['user'])) {
+	$goodsContent = 'Привет, ' . $_SESSION['user']['login'] . '<hr>';
 }
 
 $goods = getGoods();
