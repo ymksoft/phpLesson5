@@ -28,8 +28,7 @@ function updateGoods($id, $name, $description, $price, $isactive)
 	$price = mysqli_real_escape_string($link, (string)htmlspecialchars(strip_tags($price)));
 	$isactive = mysqli_real_escape_string($link, (string)htmlspecialchars(strip_tags($isactive)));
 	
-	$dateChange = localtime();
-	$sql = "UPDATE `products` SET `name` = '$name', `description` = '$description', `price` = '$price', `isActive` = '$isactive', `dateChange` = '$dateChange' WHERE `products`.`id` = $id";
+	$sql = "UPDATE `products` SET `name` = '$name', `description` = '$description', `price` = '$price', `isActive` = '$isactive', `dateChange` = NOW() WHERE `products`.`id` = $id";
 
 	$result = mysqli_query($link, $sql);
 

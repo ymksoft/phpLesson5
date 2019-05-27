@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header>
-		<ul>
+		<ul class="menu">
 			<li><a href="/">Товары</a></li>
 			<li><a href="/gallery.php">Галерея</a></li>
 			<li><a href="/news.php">Новости</a></li>
